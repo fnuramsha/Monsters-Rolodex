@@ -3,6 +3,7 @@ import "./App.css";
 import { Component } from "react";
 import CardList from "./components/card-list/card-list.component";
 import SearchBox from "./components/search-box/search-box.component";
+import Card from "./components/card/card.component";
 
 class App extends Component {
   constructor() {
@@ -44,7 +45,6 @@ class App extends Component {
     const filteredMonsters = monsters.filter((monster) =>
       monster.name.toLowerCase().includes(searchField)
     );
-    // console.log("render", this.state, filteredMonsters);
     return (
       <div className="App">
         {/* <input
