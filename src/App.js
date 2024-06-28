@@ -15,12 +15,17 @@ const App = () => {
   const [searchField, setSearchField] = useState(""); // [get, set] on function calling , our state updates and update the current value
   const [monsters, setMonsters] = useState([]);
   const [filteredMonsters, setFilteredMonsters] = useState(monsters);
+  const [title, setTitle] = useState("");
 
   const onSearchChange = (event) => {
     const searchFieldString = event.target.value.toLowerCase();
     setSearchField(searchFieldString);
   };
 
+  const onTitleChange = (event) => {
+    const searchFieldString = event.target.value.toLowerCase();
+    setTitle(searchFieldString);
+  };
   // To prevent unnecessary execution of filter method
   useEffect(() => {
     const newFilteredMonsters = monsters.filter((monster) =>
@@ -40,11 +45,17 @@ const App = () => {
 
   return (
     <div className="App">
-      <h1 className="app-title">Monsters Rolodex </h1>
+      <h1 className="app-title">{title} </h1>
       <SearchBox
         onChangeHandler={onSearchChange}
         placeholder="search monster"
         className="search-box-monsters"
+      />
+      <br />
+      <SearchBox
+        onChangeHandler={onTitleChange}
+        placeholder="set Title"
+        className="title-search-box"
       />
 
       <CardList monsters={filteredMonsters} />
